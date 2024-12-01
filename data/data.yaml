@@ -1,0 +1,12 @@
+names:
+- Hardhat
+- NO-Hardhat
+- NO-Safety Vest
+- Person
+- Safety Vest
+- machinery
+- vehicle
+nc: 7
+test: /kaggle/input/construction-site-safetyequipment/datasets/test
+train: /kaggle/input/construction-site-safetyequipment/datasets/train
+val: /kaggle/input/construction-site-safetyequipment/datasets/valid

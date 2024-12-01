@@ -1,0 +1,9 @@
+# test data
+test: ./data/mlperf/test.txt  # 82 images
+val: ./data/mlperf/val.txt
+
+# number of classes
+nc: 7
+
+# class names
+names: [ 'Hardhat', 'No-Hardhat', 'No-Safety Vest', 'Person', 'Safety Vest', 'Machinery', 'Vehicle']
