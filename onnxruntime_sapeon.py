@@ -133,7 +133,7 @@ def main(args):
         EP_list = ["CPUExecutionProvider"]
         provider_options = [{}]
     else:
-        EP_list = ["TensorrtExecutionProvider", "CPUExecutionProvider"]  # SapeonExecutionProvider
+        EP_list = ["SapeonExecutionProvider", "CPUExecutionProvider"]  # SapeonExecutionProvider
         provider_options = [{
             "expected_batch":
                 batch_size,

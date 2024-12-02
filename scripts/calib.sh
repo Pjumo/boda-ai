@@ -10,14 +10,14 @@ echo "============================"
 echo "Target Device: ${device}    "
 echo "============================"
 
-model="./models/yolov8s-object-100.onnx"
+model="./models/yolov8n-pose.onnx"
 calib_data="./datasets/valid/images"
 batch_size=1
 num_images=114
 
 if [[ "$device" =~ "330" ]]; then
     mode="low"
-    calib_table="./calib_tables/yolov8s_low.json"
+    calib_table="./calib_tables/yolov8n_pose_high.json"
     python3 calib.py \
             --model $model \
             --batch_size $batch_size \

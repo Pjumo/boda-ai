@@ -1,6 +1,5 @@
 import argparse
 import json
-import math
 import os
 import time
 from tqdm import tqdm
@@ -38,7 +37,7 @@ def get_default_args(uid: str, num_image: int = 1):
     parser.add_argument(
         "--calib_table",
         type=str,
-        default="./calib_tables/yolov8s_high.json",
+        default="./calib_tables/yolov8s_low.json",
         help="Path of a calibration table. Use a result of `calib.py`")
     parser.add_argument(
         "--class_name",
@@ -133,6 +132,7 @@ def get_default_args(uid: str, num_image: int = 1):
 
 
 def infer_model(args):
+    global ort_session
     if args.dtype == 'uint8' or args.dtype == 'sint8' or args.dtype == 'sint16':
         device = 'x220'
     else:
@@ -158,7 +158,7 @@ def infer_model(args):
         EP_list = ["CPUExecutionProvider"]
         provider_options = [{}]
     else:
-        EP_list = ["TensorrtExecutionProvider", "CPUExecutionProvider"]  # SapeonExecutionProvider
+        EP_list = ["SapeonExecutionProvider", "CPUExecutionProvider"]
         provider_options = [{
             "expected_batch":
                 batch_size,
@@ -380,7 +380,7 @@ def get_default_args_pose(uid: str, num_image: int = 1):
         "--model", "./models/yolov8n-pose.onnx",
         "--input", "./api/images",
         "--batch_size", "1",
-        "--dtype", "nf16",
+        "--dtype", "fp32",
         "--val",
         "--json", f"./api/outputs/{uid}_2.json",
         "--save_img",
